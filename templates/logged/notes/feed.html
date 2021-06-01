@@ -1,0 +1,35 @@
+{% extends 'logged/base.html' %}
+{% load static %}
+
+
+{% block headers %}
+    <link rel="stylesheet" href="{% static 'css/logged/notes/feed.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+    {% for note in notes %}
+        <div class="container note-elements">
+
+            <a href="{% url 'notes:edit' note.pk %}" class="container-fluid note-link">
+                <div class="note-text">
+                    <h3> 
+                        {{ note.title }} 
+                    </h3>
+                    <div class="note-content">
+                        {{ note.content }}
+                    </div>
+                </div>
+            </a>
+
+            <a href="{% url 'notes:delete' note.pk %}" class="delete-button-link">
+                <div class="delete-button">
+                    <button class="btn btn-outline-danger"><b>x</b></button>
+                </div>
+            </a>
+
+        </div>
+    {% endfor %}
+
+{% endblock %}

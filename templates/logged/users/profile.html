@@ -1,0 +1,85 @@
+{% extends 'logged/base.html' %}
+{% load static %}
+
+
+{% block headers %}
+    <link rel="stylesheet" href="{% static 'css/logged/users/profile.css' %}">
+{% endblock %}
+
+
+{% block content %}
+
+    <form class="form" method="POST" action="{% url 'users:update_profile' %}" enctype="multipart/form-data">
+
+        {% csrf_token %}
+
+        <div class="container-fluid logo-container">
+            {% if profile.picture %}
+                <div class="image-container">
+                    <img class="crop" src="{{ profile.picture.url }}" alt="User Profile Picture">
+                </div>
+            {% else %}
+                <div class="image-container">
+                    <img class="crop" src="{% static 'assets/generic_picture.png' %}" alt="User Profile Picture">
+                </div>
+            {% endif %}
+            <span><strong>{{ user.username }}</strong></span>
+        </div>
+
+        <br><hr><br>
+
+        <div class="form-content">
+            <div class="form-floating mb-3">
+                <input 
+                type="text" 
+                name="first_name" 
+                class="form-control {% if form.first_name.errors %} is-invalid {% endif %}" 
+                id="floatingInput" 
+                value="{% if form.errors %}{{ form.first_name.value }}{% else %}{{ user.first_name }}{% endif %}" 
+                placeholder="First Name" 
+                required="true"
+                />
+                <label for="floatingInput">First Name</label>
+                <div class="invalid-feedback ms-1">
+                    {% for error in form.first_name.errors %}
+                        {{ error }}
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="form-floating mb-3">
+                <input 
+                    type="text"
+                    name="last_name" 
+                    class="form-control {% if form.last_name.errors %}is-invalid{% endif %}" 
+                    id="floatingInput" 
+                    value="{% if form.errors %}{{ form.last_name.value }}{% else %}{{ user.last_name }}{% endif %}" 
+                    placeholder="Last Name" 
+                    required="true"
+                />
+                <label for="floatingInput">Last Name</label>
+                <div class="invalid-feedback ms-1">
+                    {% for error in form.last_name.errors %}
+                        {{ error }}
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div class="input-group file-button mb-2 {% if form.picture.errors %} invalid-field {% endif %}">
+                <input type="file" name="picture" class="form-control" id="inputGroupFile04" aria-describedby="inputGroupFileAddon04" aria-label="Upload">
+            </div>
+
+            <div style="color: #dc3545; font-size: .9em;" class="mb-3">
+                {% for error in form.picture.errors %}
+                    <b>Picture: </b>{{ error }}
+                {% endfor %}
+            </div>
+            
+            <div>
+                <button type="submit" class="btn btn-warning">Save Changes</button>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}
+

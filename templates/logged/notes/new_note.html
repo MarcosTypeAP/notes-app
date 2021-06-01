@@ -1,0 +1,69 @@
+{% extends 'logged/base.html' %}
+{% load static %}
+
+
+{% block headers %}
+    <link rel="stylesheet" href="{% static 'css/logged/notes/new_note.css' %}">
+{% endblock %}
+
+{% block content %}
+
+    {% url 'notes:new' as new_url %}
+    {% url 'notes:edit' as edit_url %}
+
+    <form 
+        class="form" 
+        method="POST" 
+        action="{% if request.path == new_url %}{{ new_url }}{% else %}{{ edit_url }}{% endif %}" 
+        enctype="multipart/form-data"
+    >
+
+        {% csrf_token %}
+
+        <div class="form-content">
+            <div class="form-floating mb-3">
+
+                <input 
+                    type="text" 
+                    name="title" 
+                    class="form-control {% if form.title.errors %} is-invalid {% endif %}" 
+                    id="floatingInput" 
+                    value="{% if form.errors %}{{ form.title.value }}{% else %}{{ note.title }}{% endif %}" 
+                    placeholder="Title" 
+                    required="true"
+                />
+                <label for="floatingInput">Title</label>
+                <div class="invalid-feedback ms-1">
+                    {% for error in form.title.errors %}
+                        {{ error }}
+                    {% endfor %}
+                </div>
+            </div>
+            
+            <div class="form-floating mb-3">
+                <textarea 
+                    type="text"
+                    name="content" 
+                    class="form-control {% if form.content.errors %}is-invalid{% endif %}" 
+                    id="floatingInput" 
+                    placeholder="Content" 
+                    style="height: 400px"
+                    required="true"
+                >{% if form.errors %}{{ form.content.value }}{% else %}{{ note.content }}{% endif %}</textarea>
+                <label for="floatingInput">Content</label>
+                <div class="invalid-feedback ms-1">
+                    {% for error in form.content.errors %}
+                        {{ error }}
+                    {% endfor %}
+                </div>
+            </div>
+
+            <div>
+                <button type="submit" class="btn btn-warning mt-3">
+                    {% if request.path == new_url %}Create Note{% else %}Save{% endif %} 
+                </button>
+            </div>
+        </div>
+    </form>
+
+{% endblock %}

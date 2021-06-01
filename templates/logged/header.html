@@ -1,0 +1,44 @@
+{% load static %}
+
+
+{% block headers %}
+    <link rel="stylesheet" href="{% static 'css/logged/header.css' %}">
+{% endblock %}
+
+
+{% block header %}
+
+    <header class="pt-1 pt-md-3 px-2 px-md-5">
+        <nav class="navbar navbar-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="{% url 'notes:feed' %}"> 
+                    <img src="{% static 'assets/note.png' %}" alt="NoteApp icon" width="40" height="40">
+                    <span class="navbar-text navbar-color">NotesApp</span>
+                </a>
+                
+                <div class="justify-content-end">
+
+                    {% url 'notes:feed' as feed_url %}
+                    {% if request.path == feed_url %}
+                        <a href="{% url 'notes:new'%}">
+                            <button class="btn btn-outline-warning me-5" type="button">New Note</button>
+                        </a>
+                    {% endif %}
+                    
+                    {% url 'users:update_profile' as update_profile_url %}
+                    {% if request.path != update_profile_url %}
+                        <a href="{% url 'users:update_profile' %}">
+                            <button class="btn btn-outline-secondary ms-2" type="button">Profile</button>
+                        </a>
+                    {% endif %}
+
+                    <a href="{% url 'users:logout' %}">
+                        <button class="btn btn-outline-secondary ms-2" type="button">Log Out</button>
+                    </a>
+                </div> 
+            </div>
+        </nav>
+    </header>
+
+{% endblock %}
+    

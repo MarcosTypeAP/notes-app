@@ -1,0 +1,53 @@
+main {
+    display: inline-block;
+    padding-top: 50px;
+}
+
+main .note-elements .note-link {
+    padding: 20px 20px;
+    color: #aaa;
+}
+
+main .note-elements {
+    border-radius: 10px;
+    background-color: #79662e47;
+    color: #aaa;
+    margin-bottom: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0;
+}
+
+main .note-elements:hover {
+    background-color: #79662e88;
+    transition: 100ms;
+}
+
+main .note-elements .delete-button {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    height: 50px;
+    width: 50px;
+    display: none;
+}
+
+main .note-elements:hover .delete-button {
+    display: flex;
+}
+
+main .note-elements .delete-button button {
+    height:50px;
+    width: 50px;
+}
+
+main .note-elements .delete-button button b {
+    font-size: 20px;
+}
+
+main .note-elements .delete-button-link {
+    height: 50px;
+    width: 50px;
+    margin-right: 20px;
+}
