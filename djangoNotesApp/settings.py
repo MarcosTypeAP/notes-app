@@ -34,7 +34,7 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 
 ALLOWED_HOSTS = [
-    'https://git.heroku.com/neuromod-notes-app.git',
+    'neuromod-notes-app.herokuapp.com',
 ]
 
 
