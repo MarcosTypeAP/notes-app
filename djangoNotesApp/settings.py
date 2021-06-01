@@ -152,16 +152,16 @@ LOGOUT_REDIRECT_URL = LOGIN_URL
 
 STATIC_URL = '/static/'
 
-# STATICFILES_DIRS = (
-#     BASE_DIR / 'static',
-# )
+STATICFILES_DIRS = (
+    BASE_DIR / 'static',
+)
 
-STATIC_ROOT = BASE_DIR / 'static'
+# STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-# STATICFILES_FINDERS = [
-#     'django.contrib.staticfiles.finders.FileSystemFinder',
-#     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
-# ]
+STATICFILES_FINDERS = [
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+]
 
 MEDIA_ROOT = BASE_DIR / 'media'
 
