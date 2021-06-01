@@ -40,10 +40,17 @@ main .note-elements:hover .delete-button {
 main .note-elements .delete-button button {
     height:50px;
     width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 main .note-elements .delete-button button b {
     font-size: 20px;
+    width: 30px;
+    height: 30px;
+    display: block;
+    margin: auto;
 }
 
 main .note-elements .delete-button-link {
