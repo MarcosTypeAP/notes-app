@@ -88,10 +88,16 @@ WSGI_APPLICATION = 'djangoNotesApp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
+from os import environ as get_env
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': get_env['DB_NAME'],
+        'USER': get_env['DB_USER'],
+        'PASSWORD': get_env['DB_PASSWORD'],
+        'HOST': get_env['DB_HOST'],
+        'PORT': get_env['DB_PORT'],
     }
 }
 
