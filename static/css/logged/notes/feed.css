@@ -51,6 +51,7 @@ main .note-elements .delete-button button b {
     height: 30px;
     display: block;
     margin: auto;
+    font-family: arial;
 }
 
 main .note-elements .delete-button-link {
