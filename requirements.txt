@@ -16,4 +16,5 @@ static3==0.7.0
 -r requirements-dev.txt
 psycopg2
 mysqlclient
+whitenoise
 
