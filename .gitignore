@@ -4,4 +4,5 @@ media
 .vscode
 *pyc
 *.venv
+.env
 
