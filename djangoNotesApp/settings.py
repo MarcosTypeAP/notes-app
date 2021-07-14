@@ -152,8 +152,10 @@ LOGOUT_REDIRECT_URL = LOGIN_URL
 
 STATIC_URL = '/static/'
 
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 STATICFILES_DIRS = (
-    BASE_DIR / 'static',
+    BASE_DIR / 'staticfiles/static',
 )
 
 STATICFILES_FINDERS = [
