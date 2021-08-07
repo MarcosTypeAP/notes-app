@@ -22,6 +22,7 @@ html {
 body {
     background-image: linear-gradient(150deg, #2e221e, 70%, #504300);
     color: #ddd;
+    min-height: 100vh;
 }
 
 .form {
