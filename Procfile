@@ -1,2 +1,2 @@
 release: python manage.py migrate
-web: python manage.py collectstatic --no-input; gunicorn djangoNotesApp.wsgi 
+web: mkdir /media; python manage.py collectstatic --no-input; gunicorn djangoNotesApp.wsgi 
