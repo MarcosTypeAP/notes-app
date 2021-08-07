@@ -1,2 +1,2 @@
-release: python manage.py migrate
-web: mkdir -p /app/media/users/picture; gunicorn djangoNotesApp.wsgi 
+release: python manage.py migrate; python manage.py deleteorphanedmedia --noinput
+web: gunicorn djangoNotesApp.wsgi 

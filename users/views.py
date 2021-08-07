@@ -7,6 +7,8 @@ from users.forms import SignupForm, ProfileForm
 
 from users.models import Profile
 
+import cloudinary_storage
+
 
 class ProfileView(LoginRequiredMixin, UpdateView):
     template_name = 'logged/users/profile.html'
@@ -15,6 +17,7 @@ class ProfileView(LoginRequiredMixin, UpdateView):
     success_url = reverse_lazy('users:update_profile')
 
     def get_object(self):
+        self.old_picture = self.request.user.profile.picture
         return self.request.user.profile
 
     def form_valid(self, form):
@@ -24,7 +27,7 @@ class ProfileView(LoginRequiredMixin, UpdateView):
         user.last_name = data['last_name']
         user.save()
         self.object = form.save()
-        return super().form_valid(form)
+        return super(ProfileView, self).form_valid(form)
 
 
 class SignupView(FormView):

@@ -9,12 +9,11 @@ class ProfileForm(forms.ModelForm):
     first_name = forms.CharField(max_length=100, required=True)
     last_name = forms.CharField(max_length=100, required=True)
     
-    picture = forms.ImageField(required=True)
+    # picture = forms.ImageField(required=True)
 
     class Meta:
         model = Profile
         fields = ['first_name', 'last_name', 'picture']
-
 
 
 class SignupForm(forms.Form):
