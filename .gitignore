@@ -5,4 +5,5 @@ media
 *pyc
 *.venv
 .env
+.mypy_cache
 
