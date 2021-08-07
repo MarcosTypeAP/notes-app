@@ -1,0 +1,10 @@
+.form .form-control {
+    background-color: #79662e47;
+    border-color: #79662e93;
+    width: 400px;
+    color: #ddd;
+}
+
+.form .form-floating {
+    margin-top: 20px;
+}
