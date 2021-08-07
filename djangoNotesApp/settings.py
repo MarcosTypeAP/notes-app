@@ -19,9 +19,11 @@ ROOT_DIR = Path(__file__).resolve(strict=True).parent.parent
 
 env = environ.Env()
 
-READ_DOT_ENV_FILE = env.bool("DJANGO_READ_DOT_ENV_FILE", False)
+READ_DOT_ENV_FILE = env.bool('DJANGO_READ_DOT_ENV_FILE', False)
 if READ_DOT_ENV_FILE:
-    env.read_env(str(ROOT_DIR / ".env"))
+    env.read_env(str(ROOT_DIR / '.env'))
+
+LOCAL_DEV = env.bool('LOCAL_DEV', False)
 
 SECRET_KEY = env('SECRET_KEY')
 DEBUG = env.bool('DEBUG', False)
@@ -84,17 +86,15 @@ WSGI_APPLICATION = 'djangoNotesApp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-from os import environ as get_env
-
-if not DEBUG:
+if not LOCAL_DEV:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME': get_env['DB_NAME'],
-            'USER': get_env['DB_USER'],
-            'PASSWORD': get_env['DB_PASSWORD'],
-            'HOST': get_env['DB_HOST'],
-            'PORT': get_env['DB_PORT'],
+            'NAME': env('DB_NAME'),
+            'USER': env('DB_USER'),
+            'PASSWORD': env('DB_PASSWORD'),
+            'HOST': env('DB_HOST'),
+            'PORT': env('DB_PORT'),
         }
     }
 else:
@@ -148,7 +148,7 @@ LOGOUT_REDIRECT_URL = LOGIN_URL
 
 STATIC_URL = '/static/'
 
-STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATIC_ROOT = str(BASE_DIR / 'staticfiles')
 
 STATICFILES_DIRS = (
     BASE_DIR / 'static',
