@@ -1,6 +1,7 @@
 .idea
 *.sqlite3
 media
+staticfiles
 .vscode
 *pyc
 *.venv
