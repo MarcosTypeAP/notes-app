@@ -7,8 +7,6 @@ from users.forms import SignupForm, ProfileForm
 
 from users.models import Profile
 
-import cloudinary_storage
-
 
 class ProfileView(LoginRequiredMixin, UpdateView):
     template_name = 'logged/users/profile.html'
